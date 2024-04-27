@@ -1,0 +1,49 @@
+{% macro footer_link(name, link) -%}
+    <p>
+        {{ name }}
+    </p>
+    <p>
+        {{ link }}
+    </p>
+{%- endmacro %}
+
+{% macro link_group(name, links) -%}
+    <div class="flex flex-col gap-y-4">
+        <h4 class="text-base font-semibold cursor-default my-0">
+            {{ name }}
+        </h4>
+        <div class="flex flex-col gap-y-2 text-base">
+            {% for link in links %}
+                <a href="{{ link.link }}"
+                   class="hover:underline no-underline transition-all">{{ link.name }}</a>
+            {% endfor %}
+        </div>
+    </div>
+{% endmacro %}
+
+<footer class="flex flex-col gap-y-5  fixed bottom-0 text-xs font-sans font-medium w-full p-4 pb-10 transition-all min-h-[60vh mobile:min-h-[50vh">
+    <div class="md:p-5 flex flex-col gap-y-5 w-full md:justify-between md:flex-row text-sm">
+        <div class="flex flex-col gap-3 text-fdt-grey-dark">
+            <p class="m-0">
+                23 Faulks road Aba, Abia, Nigeria
+            </p>
+            <p class="flex flex-row gap-1 w-fit m-0">
+                <a href="tel:+234901230902"
+                   class="hover:underline transition-all no-underline text-inherit">+2348138771855</a>
+                <a href="tel:+234901230902"
+                   class="hover:underline text-normal transition-all no-underline text-inherit">+2348024086830</a>
+            </p>
+            <p class="m-0">
+                shop@kingsklass.nigeria
+            </p>
+        </div>
+        <div class="md:flex-none flex justify-between pr-6 md:w-[55%]">
+            {{ link_group(name="Support Links", links=quick_links) }}
+            {{ link_group(name="Quick Links", links=support_links) }}
+        </div>
+    </div>
+    <div class="w-full h-[2px] bg-gray-400" />
+    <p class="text-center text-base tracking-wide">
+        &copy; 2024, KingKlass. All Rights Reserved
+    </p>
+</footer>

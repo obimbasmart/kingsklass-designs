@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>kingsklass designs</title>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/kingklass.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description"
+              content="Fashion design web application, tailored to you needs" />
+        <meta name="developer1" content="https://github.com/obimbasmart" />
+        <meta name="developer2" content="https://github.com/itsoluwatobby" />
+        <title>kingsklass</title>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+              rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+              rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;400;500;600;700;800;900&display=swap"
+              rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+              rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap"
+              rel="stylesheet" />
+        <script defer
+                src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <link rel="stylesheet"
+              href="{{ url_for('static',filename='styles/output.css') }}" />
+        <link rel="stylesheet"
+              href="{{ url_for('static',filename='font-awesome/css/font-awesome.min.css') }}" />
+        <script src="https://unpkg.com/htmx.org@1.9.12"
+                integrity="sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2"
+                crossorigin="anonymous"></script>
+        <script defer
+                src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.8/dist/cdn.min.js"></script>
+    </head>
+    <body class="h-screen relative bg-[#F8F8F8]">
+
+        {% include 'partials/navbar.html' %}
+
+        {% from 'macros/flash.html' import toast_danger, toast_success %}
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul x-data="{ show: true }"
+                    x-show="show"
+                    x-transition
+                    x-transition.scale.origin.top
+                    x-transition:enter.duration.500ms
+                    x-transition:leave.duration.400ms
+                    x-init="setTimeout(() => show = false, 3000)"
+                    class="w-full flex flex-col absolute top-16 justify-center items-center">
+                    {% for category, message in messages %}
+                        {% if category == "error" %}
+                            {{ toast_danger(message) }}
+                        {% else %}
+                            {{ toast_success(message) }}
+                        {% endif %}
+
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        <div id="content" class="mb-auto">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        <div id="sidebar" class="bg-red-500">
+            {% block sidebar %}
+
+            {% endblock %}
+        </div>
+
+        <div id="footer">
+            {% block footer %}
+
+            {% endblock %}
+        </div>
+
+        <script>
+        document.addEventListener("alpine:init", () => {
+            Alpine.store("sidebar", {
+                isOpen: false,
+                toggle() {
+                this.isOpen = !this.isOpen;
+
+                },
+            }); 
+
+            Alpine.store("user", {
+                isSignedIn: true,
+            });
+
+            Alpine.store("registeration_form", {
+                isOpen: false,
+                toggle() {
+                this.isOpen = !this.isOpen;
+            },});
+
+        });
+
+        </script>
+    </body>
+</html>

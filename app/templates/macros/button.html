@@ -1,0 +1,8 @@
+{% macro button(name, styles, link, class_names="") %}
+    <button hx-get="{{ link }}"
+            hx-target="reg-modal"
+            x-on:click="$store.sidebar.toggle()"
+            class="rounded-lg block border-0 text-base hover:opacity-90 active:opactiy-100 focus:outline-0 transition-opacity {{ class_names }}">
+        {{ name }}
+    </button>
+{% endmacro %}

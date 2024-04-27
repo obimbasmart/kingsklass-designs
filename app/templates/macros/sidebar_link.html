@@ -1,0 +1,6 @@
+{% macro sidebar_link(name, is_protected, link) %}
+    <a href="{{ link }}"
+       class="font-medium  px-4 py-5  text-fdt-grey-darker text-lg cursor-pointer hover:scale-[0.99] transition-all w-full [&:not(:last-child)]:border-b border-b-fdt-grey-normal">
+        {{ name }}
+    </a>
+{% endmacro %}

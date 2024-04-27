@@ -1,0 +1,38 @@
+<header class="mb-0 z-[9999] bg-[#F8F8F8] lg:shadow-sm rounded-b-sm w-full md:px-8 px-6 py-4 fixed top-0 flex items-center justify-between">
+    <span x-data=""
+          x-on:click="$store.sidebar.toggle();"
+          class="cursor-pointer hover:opacity-70 active:opacity-100 transition-opacity flex-none md:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             width="32"
+             height="32"
+             viewBox="0 0 32 32"
+             fill="none"
+             class="cursor-pointer hover:opacity-70 active:opacity-100 transition-opacity flex-none md:hidden"
+             x-show="!$store.sidebar.isOpen">
+            <path d="M5.33398 8H26.6673M5.33398 16H26.6673M5.33398 24H26.6673" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg"
+             width="32"
+             height="32"
+             viewBox="0 0 29 29"
+             fill="none"
+             x-show="$store.sidebar.isOpen">
+            <path d="M7.15745 7.07107L14.2285 14.1421M14.2285 14.1421L21.2996 21.2132M14.2285 14.1421L7.15745 21.2132M14.2285 14.1421L21.2996 7.07107" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    </span>
+    <span>
+        <img src="{{ url_for('static', filename='icons/ks_logo.svg') }}"
+             alt="kingsklass logo" />
+    </span>
+    <span x-data="">
+        <img src="{{ url_for('static', filename='icons/cart.svg') }}"
+             alt="kingsklass logo"
+             x-show="!$store.sidebar.isOpen" />
+             
+        <a href="/notifications">
+            <img src="{{ url_for('static', filename='icons/notification.svg') }}"
+                 alt="kingsklass logo"
+                 x-show="$store.sidebar.isOpen" />
+        </a>
+    </span>
+</header>

@@ -1,0 +1,49 @@
+{% extends 'forms/base_form.html' %}
+
+{% from 'macros/form_error.html' import error %}
+
+{% block form_content %}
+    <!-- Modal header -->
+    <div class="flex items-center justify-center  p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+        <h3 class="text-2xl font-Roboto font-medium text-gray-900 dark:text-white">
+            Login
+        </h3>
+
+    </div>
+    <form novalidate
+          class="font-montserrat space-y-4  p-4"
+          action=""
+          method="post">
+        {{ form.hidden_tag() }}
+
+        {% set form_label_style = "text-fdt-grey-darker  text-base font-medium" %}
+        {% set form_input_style = "p-2 font-montserrat border-1 border-fdt-grey-normal placeholder:text-fdt-grey-dark placeholder:text-base rounded-md w-full text-base bg-inherit focus:outline-1" %}
+
+        <p>
+            {{ form.email.label(class=form_label_style) }}
+            {{ form.email(class=form_input_style, placeholder="name@company.com") }}
+            {% for msg in form.email.errors %}
+                {{ error(msg) }}
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password.label(class=form_label_style) }}
+            {{ form.password(class=form_input_style, placeholder="••••••••") }}
+            {% for msg in form.password.errors %}
+                {{ error(msg) }}
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.remember_me(class="text-sm") }} {{ form.remember_me.label(class="text-sm") }}
+        </p>
+        <p>
+            {{ form.submit(class="bg-[#8B4513] text-white rounded-lg border-0 text-base hover:opacity-90 active:opactiy-100 focus:outline-0  w-full font-semibold  grid place-content-center md:w-1/2 py-3 hover:bg-[#8B4413] active:bg-[#8B4513] transition-colors") }}
+        </p>
+
+        <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
+            Don’t have an account yet ?  <a href="{{ url_for("app_views.register") }}"
+     class="text-blue-700 hover:underline dark:text-blue-500">Register</a>
+        </div>
+    </form>
+
+{% endblock %}

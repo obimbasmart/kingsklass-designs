@@ -1,0 +1,42 @@
+{% from 'macros/form_error.html' import error %}
+
+
+    {{ form.hidden_tag() }}
+
+    {% set p_class = "flex flex-col gap-1 w-full text-fdt-grey-darker font-montserrat" %}
+    {% set form_label_style = "font-medium" %}
+    {% set form_input_style = "p-2  border-1 border-fdt-grey-normal placeholder:text-fdt-grey-dark placeholder:text-base rounded-md w-full text-base bg-inherit focus:outline-1" %}
+
+
+    <p class="{{p_class}} text-fdt-grey-darker">
+        {{ form.first_name.label(class=form_label_style) }}
+        {{ form.first_name(class=form_input_style, placeholder="iamuser") }}
+        {% for msg in form.first_name.errors %}
+            {{ error(msg) }}
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.last_name.label(class=form_label_style) }}
+        {{ form.last_name(class=form_input_style, placeholder="iamuser") }}
+        {% for msg in form.username.errors %}
+            {{ error(msg) }}
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.username.label(class=form_label_style) }}
+        {{ form.username(class=form_input_style, placeholder="iamuser") }}
+        {% for msg in form.username.errors %}
+            {{ error(msg) }}
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.phone.label(class=form_label_style) }}
+        {{ form.phone(class=form_input_style, placeholder="name@company.com") }}
+        {% for msg in form.phone.errors %}
+            {{ error(msg) }}
+        {% endfor %}
+    </p>
+    <p hx-post="/user/edit_profile", hx-target="#profile">
+        {{ form.submit(class="bg-[#8B4513] text-white rounded-lg border-0 text-base hover:opacity-90 active:opactiy-100 focus:outline-0  w-full font-semibold  grid place-content-center md:w-1/2 py-3 hover:bg-[#8B4413] active:bg-[#8B4513] transition-colors") }}
+    </p>
+

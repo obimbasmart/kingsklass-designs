@@ -1,0 +1,114 @@
+<form novalidate  action="" class="flex flex-col gap-y-2" method="post">
+    {{ form.hidden_tag() }}
+
+    {% set p_style = "pb-0 py-0 font-montserrat  flex flex-col justify-center items-center p-1.5 bg-inherit gap-y-1.5  w-full" %}
+    {% set form_label_style = "font-normal text-fdt-grey-darker capitalize text-sm" %}
+    {% set form_input_style = "border-b-1 text-xl pb-1 text-center  bg-inherit w-full focus:outline-0 placeholder:text-fdt-grey-dark placeholder:text-xs" %}
+
+    <div class="font-montserrat space-y-4  p-4 bg-inherit w-full grid grid-cols-2 gap-y-3 gap-x-4  transition-all border-3 px-4 py-2">
+
+        <p class="{{ p_style }}">
+            {{ form.chest_burst.label(class=form_label_style) }}
+            {{ form.chest_burst(class=form_input_style, placeholder=current_user.measurements["top length"]) }}
+            {% for msg in form.chest_burst.errors %}
+                {{ error(msg) }}
+            {% endfor %}
+        </p>
+
+        <p class="{{ p_style }}">
+            {{ form.stomach.label(class=form_label_style) }}
+            {{ form.stomach(class=form_input_style,
+                        placeholder=current_user.measurements["stomach"]) }}
+            {% for msg in form.stomach.errors %}
+                {{ error(msg) }}
+            {% endfor %}
+        </p>
+
+        <p class="{{ p_style }}">
+            {{ form.top_length.label(class=form_label_style) }}
+            {{ form.top_length(class=form_input_style,
+                        placeholder=current_user.measurements["top length"]) }}
+            {% for msg in form.top_length.errors %}
+                {{ error(msg) }}
+            {% endfor %}
+        </p>
+
+        <p class="{{ p_style }}">
+            {{ form.shoulder.label(class=form_label_style) }}
+            {{ form.shoulder(class=form_input_style, placeholder=current_user.measurements["shoulder"]) }}
+            {% for msg in form.shoulder.errors %}
+                {{ error(msg) }}
+            {% endfor %}
+        </p>
+
+        <p class="{{ p_style }}">
+            {{ form.sleeve_length.label(class=form_label_style) }}
+            {{ form.sleeve_length(class=form_input_style,
+                        placeholder=current_user.measurements["sleeve length"]) }}
+            {% for msg in form.sleeve_length.errors %}
+                {{ error(msg) }}
+            {% endfor %}
+        </p>
+        <p class="{{ p_style }}">
+            {{ form.neck.label(class=form_label_style) }}
+            {{ form.neck(class=form_input_style,
+                        placeholder=current_user.measurements["neck"]) }}
+            {% for msg in form.neck.errors %}
+                {{ error(msg) }}
+            {% endfor %}
+        </p>
+        <p class="{{ p_style }}">
+            {{ form.muscle.label(class=form_label_style) }}
+            {{ form.muscle(class=form_input_style,
+                        placeholder=current_user.measurements["muscle"]) }}
+            {% for msg in form.muscle.errors %}
+                {{ error(msg) }}
+            {% endfor %}
+        </p>
+        <p class="{{ p_style }}">
+            {{ form.waist.label(class=form_label_style) }}
+            {{ form.waist(class=form_input_style,
+                        placeholder=current_user.measurements["waist"]) }}
+            {% for msg in form.waist.errors %}
+                {{ error(msg) }}
+            {% endfor %}
+        </p>
+
+        <p class="{{ p_style }}">
+            {{ form.laps.label(class=form_label_style) }}
+            {{ form.laps(class=form_input_style,
+                        placeholder=current_user.measurements["laps"]) }}
+            {% for msg in form.laps.errors %}
+                {{ error(msg) }}
+            {% endfor %}
+        </p>
+
+        <p class="{{ p_style }}">
+            {{ form.knee.label(class=form_label_style) }}
+            {{ form.knee(class=form_input_style,
+                        placeholder=current_user.measurements["knee"]) }}
+            {% for msg in form.knee.errors %}
+                {{ error(msg) }}
+            {% endfor %}
+        </p>
+    </div>
+
+    <p class="flex justify-center items-center gap-1">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             width="14"
+             height="15"
+             viewBox="0 0 14 15"
+             fill="none"
+             class="-mt-[1px]">
+            <path d="M7.0013 10.9999C7.32347 10.9999 7.58464 10.7388 7.58464 10.4166C7.58464 10.0944 7.32347 9.83325 7.0013 9.83325C6.67914 9.83325 6.41797 10.0944 6.41797 10.4166C6.41797 10.7388 6.67914 10.9999 7.0013 10.9999Z" fill="#424242" />
+            <path d="M7 6.33325V8.66659" stroke="#424242" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M2.0114 11.0616L5.95699 3.17031C6.38697 2.31042 7.61407 2.31042 8.04404 3.17031L11.9896 11.0616C12.3775 11.8373 11.8134 12.75 10.9461 12.75H3.05489C2.18761 12.75 1.62353 11.8373 2.0114 11.0616Z" stroke="#424242" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+
+        <span>All measurement are in cm</span>
+    </p>
+    <p>
+        {{ form.submit(class="bg-[#8B4513]  text-white rounded-lg border-0 text-base hover:opacity-90 active:opactiy-100 focus:outline-0  w-full font-semibold  md:w-1/2 py-3 hover:bg-[#8B4413] active:bg-[#8B4513] transition-colors") }}
+    </p>
+
+</form>
