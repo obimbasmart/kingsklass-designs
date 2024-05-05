@@ -18,6 +18,7 @@ from app.constants import (
     USER_NAV_LINKS
 )
 from app import db
+from app.email import send_mail
 
 
 @app_views.route("/login", methods=["POST", "GET"])
@@ -29,6 +30,9 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).one_or_none()
+        if user is None:
+            user = User.query.filter_by(username=form.email.data).one_or_none()
+
         if user is None or not user.check_password(form.password.data):
             flash('Invalid email or password', "error")
             return redirect(url_for('app_views.login'))
@@ -59,7 +63,7 @@ def register():
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
-        flash("Congratulations!! Registration completed")
+        flash("Registration successfull")
         return redirect(url_for('app_views.login'))
     return render_template("/forms/register.html",
                            form=form,
@@ -71,3 +75,5 @@ def logout():
     logout_user()
     flash("Logged out successfully")
     return redirect(url_for('app_views.home'))
+
+

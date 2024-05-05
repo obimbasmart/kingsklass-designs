@@ -8,6 +8,7 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 from os import getenv
 from dotenv import load_dotenv
+from flask_mail import Mail
 
 load_dotenv()
 
@@ -33,3 +34,4 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login_manager = LoginManager(app)
 login_manager.login_view = "app_views.login"
+mail = Mail(app)

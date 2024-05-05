@@ -35,6 +35,8 @@
                 crossorigin="anonymous"></script>
         <script defer
                 src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.8/dist/cdn.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     </head>
     <body class="h-screen relative bg-[#F8F8F8]">
 
@@ -64,7 +66,7 @@
             {% endif %}
         {% endwith %}
 
-        <div id="content" class="mb-auto">
+        <div id="content" class="scroll-smooth">
             {% block content %}
             {% endblock %}
         </div>

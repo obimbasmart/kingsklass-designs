@@ -4,6 +4,13 @@
     {% include 'partials/sidebar.html'   %}
 {% endblock %}
 
+{% block content %}
+  {% include 'partials/hero.html'   %}
+  {% include 'partials/how_it_works.html'   %}
+  {% include 'partials/why_custom_tailoring.html'   %}
+  {% include 'partials/testimonials.html'   %}
+{% endblock %}
+
 {% block footer %}
-    {% include 'partials/footer.html'   %}
+  {% include 'partials/footer.html'   %}
 {% endblock %}

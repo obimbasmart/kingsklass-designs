@@ -3,59 +3,76 @@
 {% from 'macros/form_error.html' import error %}
 
 {% block form_content %}
-    <!-- Modal header -->
-    <div class="flex items-center justify-center  p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-        <h3 class="text-2xl font-Roboto font-medium text-gray-900 dark:text-white">
-            Register
-        </h3>
+    <div>
+        <!-- Modal header -->
+        <div class="flex flex-col items-center justify-center p-4 md:p-5  rounded-t w-full gap-9">
+            <h3 class="text-2xl font-montserrat font-semibold font-medium text-gray-900">
+                Register
+            </h3>
 
-    </div>
-    <form novalidate
-          class="font-montserrat space-y-4  p-4"
-          action=""
-          method="post">
-        {{ form.hidden_tag() }}
+            <div class="flex bg-fdt-grey-light-active items-center py-2 rounded-md w-full gap-5 pl-6">
 
-        {% set form_label_style = "text-fdt-grey-darker  text-base font-medium" %}
-        {% set form_input_style = "p-2  border-1 border-fdt-grey-normal placeholder:text-fdt-grey-dark placeholder:text-base rounded-md w-full text-base bg-inherit focus:outline-1" %}
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     width="24"
+                     height="24"
+                     viewBox="0 0 24 24"
+                     fill="none">
+                    <path d="M23.9996 12.2878C23.9996 11.4773 23.9196 10.6407 23.7862 9.85645H12.2363V14.4838H18.8515C18.5848 15.974 17.7045 17.2811 16.3975 18.1177L20.3452 21.1242C22.6659 19.0066 23.9996 15.9217 23.9996 12.2878Z" fill="#4280EF" />
+                    <path d="M12.2372 23.9999C15.5447 23.9999 18.3188 22.928 20.3461 21.098L16.3983 18.1177C15.3047 18.8497 13.8909 19.268 12.2372 19.268C9.03626 19.268 6.34218 17.1504 5.35524 14.3269L1.30078 17.3857C3.38136 21.4379 7.59586 23.9999 12.2372 23.9999Z" fill="#34A353" />
+                    <path d="M5.35482 14.3009C4.84801 12.8107 4.84801 11.1898 5.35482 9.69965L1.30036 6.61475C-0.433454 10.0134 -0.433454 14.0133 1.30036 17.3858L5.35482 14.3009Z" fill="#F6B704" />
+                    <path d="M12.2372 4.75854C13.971 4.73239 15.6781 5.38597 16.9318 6.56242L20.4261 3.11151C18.2121 1.07233 15.278 -0.025687 12.2372 0.000456276C7.59586 0.000456276 3.38136 2.5625 1.30078 6.61471L5.35524 9.69962C6.34218 6.85 9.03626 4.75854 12.2372 4.75854Z" fill="#E54335" />
+                </svg>
 
-        <p>
-            {{ form.username.label(class=form_label_style) }}
-            {{ form.username(class=form_input_style, placeholder="iamuser") }}
-            {% for msg in form.username.errors %}
-                {{ error(msg) }}
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.email.label(class=form_label_style) }}
-            {{ form.email(class=form_input_style, placeholder="name@company.com") }}
-            {% for msg in form.email.errors %}
-                {{ error(msg) }}
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.password.label(class=form_label_style) }}
-            {{ form.password(class=form_input_style, placeholder="••••••••") }}
-            {% for msg in form.password.errors %}
-                {{ error(msg) }}
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.password2.label(class=form_label_style) }}
-            {{ form.password2(class=form_input_style, placeholder="••••••••") }}
-            {% for msg in form.password2.errors %}
-                {{ error(msg) }}
-            {% endfor %}
-        </p>
+                <span class="text-base font-Roboto font-normal self-center text-center">Continue with Google</span>
 
-        <p>
-            {{ form.submit(class="bg-[#8B4513] text-white rounded-lg border-0 text-base hover:opacity-90 active:opactiy-100 focus:outline-0  w-full font-semibold  grid place-content-center md:w-1/2 py-3 hover:bg-[#8B4413] active:bg-[#8B4513] transition-colors") }}
-        </p>
 
-        <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
-            Aready have an account ? <a href="{{ url_for("app_views.login") }}"
-    class="text-blue-700 hover:underline dark:text-blue-500">Login</a>
+            </div>
+
+            <p class="text-sm w-full text-center border-b-1 border-b-black leading-[0.05em]">
+                <span class="bg-fdt-grey-background px-2 text-m">or continue with email</span>
+            </p>
+
         </div>
-    </form>
+        <form novalidate
+              class="font-montserrat w-full space-y-4 px-4"
+              action=""
+              method="post">
+            {{ form.hidden_tag() }}
+            {% set form_label_style = "text-fdt-grey-darker  text-base font-medium" %}
+            {% set form_input_style = "p-3  border-1 border-fdt-grey-darker placeholder:text-fdt-grey-dark placeholder:text-base rounded-md w-full text-base bg-inherit focus:outline-1" %}
+
+            <p>
+                {{ form.username.label(class=form_label_style) }}
+                {{ form.username(class=form_input_style, placeholder="iamuser") }}
+                {% for msg in form.username.errors %}
+                    {{ error(msg) }}
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.email.label(class=form_label_style) }}
+                {{ form.email(class=form_input_style, placeholder="name@company.com") }}
+                {% for msg in form.email.errors %}
+                    {{ error(msg) }}
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.password.label(class=form_label_style) }}
+                {{ form.password(class=form_input_style, placeholder="••••••••") }}
+                {% for msg in form.password.errors %}
+                    {{ error(msg) }}
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.submit(class="bg-[#8B4513] text-white rounded-lg border-0 text-base hover:opacity-90 active:opactiy-100 focus:outline-0  w-full font-semibold  grid place-content-center md:w-1/2 py-3 hover:bg-[#8B4413] active:bg-[#8B4513] transition-colors") }}
+            </p>
+
+
+        </form>
+    </div>
+
+    <div class="text-center mx-4 text-sm font-medium text-black">
+        Got an account already ?  <a href="{{ url_for("app_views.login") }}"
+     class="hover:underline dark:text-black underline">Login</a>
+    </div>
 
 {% endblock %}

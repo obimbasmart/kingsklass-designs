@@ -1,0 +1,56 @@
+<div x-data="{ currentIndex: Math.floor(Math.random() * 4) + 1, IMG_NUM: 4 }"
+     class="max-h-dvh h-dvh bg-center bg-gradient-to-tr from-black to-black text-center bg-cover bg-no-repeat flex flex-col justify-center items-center border-top-4"
+     x-init="() => setInterval(() => currentIndex > 3 ? currentIndex = 1: currentIndex++, 15000)"
+     :style="'background-image: url(\'/static/images/hero_img_' + currentIndex + '.png\');'">
+
+  <div class="px-4 flex flex-col gap-12 justify-center items-center">
+    <div class="flex flex-col self-center text-center mx-auto px-5 gap-y-4 items-center justify-stretch">
+      <h1 class="ml10 uppercase font-playfair-display text-3xl font-bold tracking-tight md:text-6xl xl:text-7xl text-white">
+        Crafting Identity
+      </h1>
+
+      <p class="text-white text-xl font-Roboto leading-7 text-center">
+        We merge traditional craftsmanship with contemporary design to create custom-tailored garments
+      </p>
+
+    </div>
+    <a class="inline-block rounded-lg max-w-[250px] bg-white px-8 py-4 w-full text-xl font-Roboto font-semibold  text-fdt-brown-normal transition duration-300 transform focus:outline-none focus:ring focus:ring-blue-300 active:scale-90"
+       data-te-ripple-init
+       href="#!"
+       role="button">Get started</a>
+  </div>
+
+  <svg xmlns="http://www.w3.org/2000/svg"
+       width="62"
+       height="62"
+       class="absolute bottom-14 animate-bounce"
+       viewBox="0 0 62 62"
+       fill="none">
+    <path d="M18 41L29.6868 28.5781C30.412 27.8073 31.588 27.8073 32.3132 28.5781L44 41" stroke="#939393" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M20 55L29.8888 44.4892C30.5025 43.8369 31.4975 43.8369 32.1112 44.4892L42 55" stroke="#939393" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M12.916 28.4166L29.1727 12.16C30.1815 11.1511 31.8172 11.1511 32.826 12.16L49.0827 28.4166" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  </svg>
+</div>
+
+
+
+
+
+<!-- <div x-data="{ currentIndex: 1, IMG_NUM: 4, resetImage: () => {setInterval(() => currentIndex++, 3000)} }" class="bg-gradient-to-tr from-neutral-600 to-gray-600 h-screen text-center object-contain flex flex-col justify-center items-center w-full" x-init="() => setInterval(() => currentIndex > 3 ? currentIndex = 1: currentIndex++, 3000)">
+
+  <img :src="'/static/images/hero_img_' + currentIndex +'.png'" alt="hero image" class="w-full bg-no-repeat h-screen object-cover absolute mix-blend-overlay" />
+
+  <div class="px-4 flex flex-col gap-5">
+    <div class="flex flex-col self-center text-center mx-auto px-5 gap-y-4 items-center justify-stretch">
+      <h1 class="font-playfair-display text-4xl font-bold tracking-tight md:text-6xl xl:text-7xl text-white shadow-lg">
+        Crafting Identity
+      </h1>
+
+      <p class="text-white text-xl font-Roboto leading-7 text-center">
+        We merge traditional craftsmanship with contemporary design to create custom-tailored garments
+      </p>
+
+    </div>
+    <a class="inline-block rounded-lg bg-white px-8 py-4 w-full text-xl font-Roboto font-semibold  text-fdt-brown-normal shadow-[0_4px_9px_-4px_#8B4513] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] md:mr-2 md:mb-0" data-te-ripple-init  href="#!" role="button">Get started</a>
+  </div>
+</div> -->

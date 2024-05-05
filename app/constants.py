@@ -42,8 +42,8 @@ AdminNavLinks = [
 
 
 measurement_names = [
-    "chest/burst", "stomach", "top length", "shoulder",
-    "sleeve length", "neck", "muscle", "waist", "laps", "knee"
+    "chest_burst", "stomach", "top_length", "shoulder",
+    "sleeve_length", "neck", "muscle", "waist", "laps", "knee"
 ]
 default_measurement = {
     name: 0.0 for name in measurement_names

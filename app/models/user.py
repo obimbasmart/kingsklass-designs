@@ -9,8 +9,9 @@ from sqlalchemy.orm import Mapped, mapped_column
 from app.constants import default_measurement
 from ..models.base_model import BaseModel
 from flask_login import UserMixin
-from app import login_manager, db
-
+from app import login_manager, db, app
+import jwt
+from time import time
 
 class User(UserMixin, BaseModel):
     """User class """
@@ -39,9 +40,22 @@ class User(UserMixin, BaseModel):
             for attr, value in super().to_dict().items()
             if attr not in ignore_attrs
         }
+    
+    def get_reset_password_token(self, expires_in=600):
+        return jwt.encode(
+            {'reset_password': self.id, 'exp': time() + expires_in},
+            app.config['SECRET_KEY'], algorithm='HS256')
+
+    @staticmethod
+    def verify_reset_password_token(token):
+        try:
+            id = jwt.decode(token, app.config['SECRET_KEY'],
+                            algorithms=['HS256'])['reset_password']
+        except:
+            return
+        return db.session.get(User, id)
 
 
 @login_manager.user_loader
 def load_user(id: str) -> User:
-    print("we don run am")
     return db.session.get(User, id)

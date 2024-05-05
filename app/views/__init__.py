@@ -14,3 +14,4 @@ from . import review
 from . import static_views
 from . import auth
 from . import notification
+from . import mail

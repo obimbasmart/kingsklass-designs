@@ -20,8 +20,8 @@ class RegisterationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     email = EmailField("Email", validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
-    password2 = PasswordField(
-        'Confirm Password', validators=[DataRequired(), EqualTo('password')])
+    # password2 = PasswordField(
+    #     'Confirm Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Register')
 
     def validate_username(self, username):
@@ -36,7 +36,7 @@ class RegisterationForm(FlaskForm):
 
 
 class LoginForm(FlaskForm):
-    email = EmailField("Email", validators=[DataRequired(), Email()])
+    email = EmailField("Email", validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     remember_me = BooleanField('Remember Me')
     submit = SubmitField('Login')
@@ -60,9 +60,22 @@ class InputMeasurementForm(FlaskForm):
     laps = DecimalField("Laps", places=2)
     knee = DecimalField("Knee", places=2)
     stomach = DecimalField("Stomach", places=2)
-    chest_burst = DecimalField("Chest/Burst", places=2)
+    chest_burst = DecimalField("Chest Burst", places=2)
     submit = SubmitField("Save")
 
 
+class ResetPasswordRequestForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    submit = SubmitField('Reset Password')
 
-# default=current_user.measurements.get("stomach"))
+    def validate_email(self, email):
+        user = User.query.filter_by(email=email.data).one_or_none()
+        if user is None:
+            raise ValidationError("Sorry this email is not registered")
+
+
+class ResetPasswordForm(FlaskForm):
+    password = PasswordField('Password', validators=[DataRequired()])
+    password2 = PasswordField(
+        'Repeat Password', validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('Comfirm')

@@ -8,15 +8,16 @@
        x-show="$store.sidebar.isOpen"
        x-transition
        x-transition.scale.orgin.left.top
-       class="bg-[#ea2828]  fixed top-14 left-0 z-40 w-full transition-transform h-screen sm:translate-x-0"
+       class="fixed top-14 left-0 z-40 w-full transition-transform h-screen sm:translate-x-0"
        aria-label="Sidebar">
-    <div class="bg-[#F8F8F8] h-full overflow-y-auto  px-3 py-1 top-0 border flex flex-col gap-y-6"
+    <div class="bg-[#F8F8F8] h-full overflow-y-auto  px-3 py-1 top-14 border flex flex-col gap-y-6"
          x-show="true">
         {% if not current_user.is_anonymous %}
-            <header class="flex items-center justify-between mt-3 bg-white px-4 py-3 rounded-lg shadow">
+        <a href="/user/me">
+            <header class="flex items-center justify-between mt-3 bg-inherit px-4 py-3 rounded-lg">
                 <div class="flex items-center gap-x-4">
-                    <p class="relative after:absolute after:bg-[#FF3E30] after:content-[''] after:w-2 after:h-2 after:rounded-full after:right-1 after:top-1 font-bold text-3xl bg-[#D69203] text-white rounded-full w-14 h-14 grid place-content-center">
-                        G
+                    <p class="uppercase relative after:absolute after:bg-[#FF3E30] after:content-[''] after:w-2 after:h-2 after:rounded-full after:right-1 after:top-1 font-bold text-3xl bg-[#D69203] text-white rounded-full w-14 h-14 grid place-content-center">
+                        {{current_user.username[0]}}
                     </p>
                     <div class="flex flex-col font-semibold gap-y-1">
                         <h3 class="text-2xl font-medium capitalize">
@@ -26,14 +27,15 @@
                     </div>
                 </div>
                 <span>
-                    <a href="/user/me">
+                  
                         <img src="{{ url_for('static', filename='icons/arrow_right.svg') }}"
                              alt="arrow right"
                              height=""
                              width="" />
-                    </a>
+                
                 </span>
             </header>
+            </a>
         {% endif %}
         <div x-data="{is_in: $store.user.isSignedIn}"
              class="flex mt-3 flex-col gap-y-3 font-semibold w-full bg-white rounded-lg shadow">
@@ -43,14 +45,15 @@
 
                 {% else %}
                     {{ sidebar_link(name=link.name,
-                                        is_protected=link.is_protected) }}
+                                    is_protected=link.is_protected,
+                                    link=link.link) }}
                 {% endif %}
 
             {% endfor %}
         </div>
         <div x-data class="flex flex-col gap-y-4 mt-12">
 
-            {% set button_style = "rounded-lg border-0 text-base hover:opacity-90 active:opactiy-100 focus:outline-0  w-full font-semibold  grid place-content-center md:w-1/2 py-3 hover:bg-[#8B4413] active:bg-[#8B4513] transition-colors" %}
+            {% set button_style = "rounded-lg border-0 text-base 0 active:opactiy-100 focus:outline-0  w-full font-semibold  grid place-content-center md:w-1/2 py-3 hover:bg-[#8B4413] active:bg-[#8B4513] transition-colors" %}
 
             {% if current_user.is_anonymous %}
                 <a href="/register" class="{{ button_style }} bg-[#8B4513] text-white">
