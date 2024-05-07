@@ -41,6 +41,13 @@
             {% set form_label_style = "text-fdt-grey-darker  text-base font-medium" %}
             {% set form_input_style = "p-3  border-1 border-fdt-grey-darker placeholder:text-fdt-grey-dark placeholder:text-base rounded-md w-full text-base bg-inherit focus:outline-1" %}
 
+
+            <p>
+                {{form.email.label(class="text-2xl")}}
+                {{form.email()}}
+            </p>
+
+
             <p>
                 {{ form.email.label(class=form_label_style) }}
                 {{ form.email(class=form_input_style, placeholder="name@company.com") }}

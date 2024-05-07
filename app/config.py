@@ -23,7 +23,6 @@ class Config:
     MAIL_DEFAULT_SENDER = os.environ.get('MAIL_DEFAULT_SENDER')
     ADMINS = ['emmapromisesmartnbc@gmail.com']
 
-    # print(MAIL_SERVER, MAIL_PORT, MAIL_USE_TLS, MAIL_USERNAME, MAIL_PASSWORD, MAIL_DEFAULT_SENDER, end="\n")
 
 
 class DevConfig(Config):

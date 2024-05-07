@@ -8,4 +8,5 @@ wheels/
 node_modules
 .venv
 .vscode
+*.env
 .env

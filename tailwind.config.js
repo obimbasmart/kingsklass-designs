@@ -3,8 +3,8 @@ module.exports = {
   content: [
     "app/templates/**/*.html",
     "./templates/**/*.html",
-    "./static/src/**/*.js",
-    "./node_modules/flowbite/**/*.js"
+    // "./static/src/**/*.js",
+    // "./node_modules/flowbite/**/*.js"
   ],
   theme: {
     extend: {
